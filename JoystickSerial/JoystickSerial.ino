@@ -11,7 +11,7 @@ void loop()
   int rawValueY = analogRead(A1);
   int mappedValueY = map(rawValueY, 0, 1023, 0, 100);
 
-  // Print the parsed values in the serial monitor
+  // Print the mapped values in the serial monitor
   Serial.println();
   Serial.println("Joystick values:");
   Serial.println("X :" + String(mappedValueX));
