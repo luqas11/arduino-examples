@@ -79,7 +79,7 @@ namespace CPULoadReader {
         Console.WriteLine("Unable to read the current CPU load value.");
       }
 
-      // Repeat all the process indefinetly, waiting 100ms between repetitions
+      // Repeat all the process indefinetly, waiting a given time between repetitions
       Thread.Sleep(DELAY_TIME_MS);
       sendCPULoadValue();
     }
