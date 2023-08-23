@@ -1,5 +1,5 @@
 // The pins where the R, G and B components of the RGB LED are connected
-const int ledPins[] = {11, 10, 9};
+const int LED_PINS[] = {11, 10, 9};
 // The chat offset defined in the CPULoadReader for the outcoming characters
 const char CHAR_OFFSET = ' ';
 // The speed at which the color will change after receiving a value (inversely defined, e.g. a lower value will increase the speed)
@@ -37,11 +37,11 @@ void loop()
 
   // Set the RGB outputs to the corresponding values
   float valueR = map(mean, 0, 100, 0, 255);
-  analogWrite(ledPins[0], valueR);
+  analogWrite(LED_PINS[0], valueR);
   float valueG = map(100 - mean, 0, 100, 0, 255);
-  analogWrite(ledPins[1], valueG);
+  analogWrite(LED_PINS[1], valueG);
   float valueB = map(100 - mean, 0, 100, 0, 255);
-  analogWrite(ledPins[2], valueB);
+  analogWrite(LED_PINS[2], valueB);
 
   // Wait some time to avoid excessive prints to the serial monitor
   delay(50);
