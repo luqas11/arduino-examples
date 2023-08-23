@@ -1,0 +1,3 @@
+# IRJoystick
+
+Example of a PC Joystick made with a IR remote control. The IRremote library decodes the IR signal from the control, and the Joystick library allows the Arduino to be recognized as a PC Joystick and manages the buttons state. The Joystick library requires an ATmega32u4 based board in order to work (e.g. Leonardo, Micro, etc.).
