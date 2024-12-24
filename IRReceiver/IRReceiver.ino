@@ -1,5 +1,4 @@
-#include <Arduino.h>
-#include <IRremote.hpp>
+#include <IRremote.h>
 
 const int IR_RECEIVER_PIN = 8;
 
