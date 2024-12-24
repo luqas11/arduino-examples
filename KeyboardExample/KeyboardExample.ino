@@ -1,17 +1,15 @@
 #include "Keyboard.h"
 
 // Input pin numbers
-int inputs[] = {8, 9};
+int inputs[] = { 8, 9 };
 // Keys to be pressed when each pin is LOW
-int keys[] = {107, 108};
+int keys[] = { 107, 108 };
 // State of the keys
-int state[] = {HIGH, HIGH};
+int state[] = { HIGH, HIGH };
 
-void setup()
-{
+void setup() {
   // Loop over the pin array
-  for (int i = 0; i < int(sizeof(inputs) / 2); i++)
-  {
+  for (int i = 0; i < int(sizeof(inputs) / 2); i++) {
     // Initialize the pin with the internal pull up enabled
     pinMode(inputs[i], INPUT_PULLUP);
   }
@@ -19,25 +17,20 @@ void setup()
   Serial.begin(9600);
 }
 
-void loop()
-{
+void loop() {
   // Loop over the pin array
-  for (int i = 0; i < int(sizeof(inputs) / 2); i++)
-  {
+  for (int i = 0; i < int(sizeof(inputs) / 2); i++) {
     // Read the pin value
     uint8_t value = digitalRead(inputs[i]);
     // Evaluate if the state has change since the previos loop, and if not, do nothing
-    if (value != state[i])
-    {
+    if (value != state[i]) {
       // If the pin is LOW, press the key indicated for that pin
-      if (value == LOW)
-      {
+      if (value == LOW) {
         Serial.println("Pressing key " + String(keys[i]));
         Keyboard.press(keys[i]);
       }
       // If the pin is HIGH, release the key indicated for that pin
-      else
-      {
+      else {
         Serial.println("Releasing key " + String(keys[i]));
         Keyboard.release(keys[i]);
       }

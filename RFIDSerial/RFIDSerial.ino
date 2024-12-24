@@ -8,25 +8,21 @@ const int SS_PIN = 10;
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
-void setup()
-{
+void setup() {
   // Initialize serial monitor, MFRC522 chip and SIP communication
   Serial.begin(9600);
   SPI.begin();
   mfrc522.PCD_Init();
 }
 
-void loop()
-{
+void loop() {
   // Reset the loop if no new card present
-  if (!mfrc522.PICC_IsNewCardPresent())
-  {
+  if (!mfrc522.PICC_IsNewCardPresent()) {
     return;
   }
 
   // Select one of the present cards, and try to communicate with it
-  if (!mfrc522.PICC_ReadCardSerial())
-  {
+  if (!mfrc522.PICC_ReadCardSerial()) {
     return;
   }
 

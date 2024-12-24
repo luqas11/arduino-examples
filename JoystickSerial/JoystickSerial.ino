@@ -1,10 +1,8 @@
-void setup()
-{
+void setup() {
   Serial.begin(9600);
 }
 
-void loop()
-{
+void loop() {
   // Read the analog input values, and map them to a percentage value between 0 and 100
   int rawValueX = analogRead(A0);
   int mappedValueX = map(rawValueX, 0, 1023, 0, 100);

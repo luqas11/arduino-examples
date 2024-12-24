@@ -1,5 +1,5 @@
 // The pins where the R, G and B components of the RGB LED are connected
-const int LED_PINS[] = {11, 10, 9};
+const int LED_PINS[] = { 11, 10, 9 };
 // The chat offset defined in the CPULoadReader for the outcoming characters
 const char CHAR_OFFSET = ' ';
 // The speed at which the color will change after receiving a value (inversely defined, e.g. a lower value will increase the speed)
@@ -8,8 +8,7 @@ const int SPEED_FACTOR = 40;
 int currentValue = 1;
 float mean = 1;
 
-void setup()
-{
+void setup() {
   // Initialize serial communication and LED outputs
   Serial.begin(9600);
   pinMode(9, OUTPUT);
@@ -17,11 +16,9 @@ void setup()
   pinMode(11, OUTPUT);
 }
 
-void loop()
-{
+void loop() {
   // Read the serial port until a character is received
-  while (Serial.available() > 0)
-  {
+  while (Serial.available() > 0) {
     char receivedChar = Serial.read();
     // Apply a correction to the received character, based on the given offset
     currentValue = (receivedChar - CHAR_OFFSET) * 2;

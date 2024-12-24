@@ -11,8 +11,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 bool isPowerDown = false;
 
-void setup()
-{
+void setup() {
   // Initialize serial monitor, MFRC522 chip and SIP communication
   Serial.begin(9600);
   SPI.begin();
@@ -20,34 +19,28 @@ void setup()
   pinMode(BUTTON_PIN, INPUT_PULLUP);
 }
 
-void loop()
-{
+void loop() {
   // If the button is pressed and the chip is not in soft power down mode, set it
-  if (digitalRead(BUTTON_PIN) == LOW && !isPowerDown)
-  {
+  if (digitalRead(BUTTON_PIN) == LOW && !isPowerDown) {
     mfrc522.PCD_SoftPowerDown();
     isPowerDown = true;
   }
 
   // If the button is released and the chip is in soft power down mode, unset it
-  if (digitalRead(BUTTON_PIN) == HIGH && isPowerDown)
-  {
+  if (digitalRead(BUTTON_PIN) == HIGH && isPowerDown) {
     mfrc522.PCD_SoftPowerUp();
     isPowerDown = false;
   }
 
   // If the chip is not in soft power down mode, read any present cards
-  if (!isPowerDown)
-  {
+  if (!isPowerDown) {
     // Reset the loop if no new card present
-    if (!mfrc522.PICC_IsNewCardPresent())
-    {
+    if (!mfrc522.PICC_IsNewCardPresent()) {
       return;
     }
 
     // Select one of the present cards, and try to communicate with it
-    if (!mfrc522.PICC_ReadCardSerial())
-    {
+    if (!mfrc522.PICC_ReadCardSerial()) {
       return;
     }
 
